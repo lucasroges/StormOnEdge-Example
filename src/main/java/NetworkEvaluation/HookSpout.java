@@ -13,7 +13,6 @@ public class HookSpout extends BaseTaskHook {
 
 	//private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SOEBasicHook.class);
 	
-	String homePath;
 	long now;
 	long timeStamp;
 	long cycle = 2000;
@@ -44,7 +43,6 @@ public class HookSpout extends BaseTaskHook {
             }
         }
         */
-		homePath = System.getenv("HOME");
 		now = System.currentTimeMillis();
 		now2 = System.currentTimeMillis();
 		timeStamp = now;
@@ -77,7 +75,7 @@ public class HookSpout extends BaseTaskHook {
         		if(counter2 >= printCycle)
         		{
         			try {
-        				FileWriter writer = new FileWriter(homePath + "/Spout-EmitCounter.csv", true);
+        				FileWriter writer = new FileWriter("/home/kend/Spout-EmitCounter.csv", true);
         				writer.write(emitResultString.toString());
         				writer.close();
         				
@@ -117,11 +115,11 @@ public class HookSpout extends BaseTaskHook {
         		if(counter >= printCycle)
         		{
         			try {
-        				FileWriter writer = new FileWriter(homePath + "/Spout-LatencyHook.csv", true);
+        				FileWriter writer = new FileWriter("/home/kend/Spout-LatencyHook.csv", true);
         				writer.write(latencyResultString.toString());
         				writer.close();
         				
-        				writer = new FileWriter(homePath + "/Spout-LatencyCounter.csv", true);
+        				writer = new FileWriter("/home/kend/Spout-LatencyCounter.csv", true);
         				writer.write(counterResultString.toString());
         				writer.close();
         			}catch(Exception e){e.printStackTrace();}
